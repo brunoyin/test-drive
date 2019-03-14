@@ -6,3 +6,12 @@
 ## Load some data from US Government college scorecard 
 
 Real World data to make it a little bit more interesting: college name, location, average SAT/ACT admitted, cost, earnings after 10 years.
+
+## build docker image
+
+```
+docker build -t yin/postgres:11.2 .
+```
+
+### start postgres docker container
+
