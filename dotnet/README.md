@@ -5,7 +5,7 @@
 3. create an xUnit test project to test the db access components
 
 ### generate code in pwsh
-``
+```
 $cnstr = "Host={0};Database={1};Username={2};Password={3}" -f $env:PGHOST,$env:PGDATABASE,$env:PGUSER,$env:PGPASSWORD
 dotnet ef dbcontext scaffold $cnstr Npgsql.EntityFrameworkCore.PostgreSQL
 ```
