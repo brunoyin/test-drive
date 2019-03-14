@@ -13,5 +13,9 @@ Real World data to make it a little bit more interesting: college name, location
 docker build -t yin/postgres:11.2 .
 ```
 
-### start postgres docker container
+### start postgres docker container in Bash
 
+docker run -e POSTGRES_PASSWORD=bruno \
+-p 5432:5432 \
+--name yin-postgres -d \
+yin/postgres:11.2

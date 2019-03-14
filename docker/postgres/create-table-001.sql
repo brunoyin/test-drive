@@ -1,6 +1,6 @@
 create schema yin;
 
-create yin.college(
+create table yin.college(
     id varchar(12) not null primary key,
     name varchar(128) not null,
     city varchar(36) not null,
