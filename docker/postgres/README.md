@@ -2,3 +2,7 @@
 
 1. make sure the bash script is executable
 2. Make sure no DOS/Windows new line characters
+
+## Load some data from US Government college scorecard 
+
+Real World data to make it a little bit more interesting: college name, location, average SAT/ACT admitted, cost, earnings after 10 years.
