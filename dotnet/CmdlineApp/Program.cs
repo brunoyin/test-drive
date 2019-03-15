@@ -17,8 +17,10 @@ namespace CmdlineApp
         {
             // Console.WriteLine("Hello World!");
             var dt = DateTime.Now;
+            var tmpDir = Environment.GetEnvironmentVariable("TEST_TMP_DIR") ?? Environment.CurrentDirectory;
+            var logFile = Path.Combine(tmpDir, $"CmdlineApp-log-{dt:yyyyMMddHHmmss}.txt");
             Log.Logger = new LoggerConfiguration()
-                .WriteTo.File(Path.Combine(Environment.CurrentDirectory, $"log-{dt:yyyyMMddHHmmss}.txt"))
+                .WriteTo.File(logFile)
                 .CreateLogger();
             Log.Information("Getting started");
 
