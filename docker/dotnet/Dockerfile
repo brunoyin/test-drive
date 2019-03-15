@@ -18,7 +18,7 @@ RUN groupadd -g ${GID} ${GROUPNAME} \
 # switch to the new user
 USER ${USERNAME}
 # install some tools
-dotnet tool install -g cake.tool \
+RUN dotnet tool install -g cake.tool \
 && dotnet tool install -g dotnet-script
 # setup tool path
 ENV PATH=/home/${USERNAME}/.dotnet/tools:$PATH
