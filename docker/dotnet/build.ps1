@@ -9,16 +9,17 @@ docker build `
 --build-arg GID=$(id -g) `
 -t yin/dotnet:2.2 .
 
-if ($?){
-    $w.Stop()
+$success = $?
+$w.Stop()
+
+if ($success){
     "yin/dotnet:2.2 has been built successfully in {0:#,###.##0} seconds" -f $w.Elapsed.TotalSeconds
 }else {
-    $w.Stop()
     "Failed to build yin/dotnet:2.2, time used: {0:#,###.##0} seconds" -f $w.Elapsed.TotalSeconds
 }
 
 # to test, 
-# 1. Make sure postgres docker server is running, set up properly
+# 1. Make sure postgres docker container is running, set up properly
 # $env:PGHOST = '192.168.0.48'
 # $env:PGDATABASE = 'bruno'
 # $env:PGUSER = 'bruno'
