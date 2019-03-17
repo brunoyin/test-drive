@@ -2,7 +2,7 @@
 **Trying out new technologies**
 
 ## Lab setup
-
+[Details](./docker/postgres/)
 1. Build a Postgres Docker image that creates a user and a database at startup
 2. Populate a table using College Scorecard data from US Government 
 
