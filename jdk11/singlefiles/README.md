@@ -2,7 +2,7 @@
 
 ## first, download
 
-1. [OpenCSV] (https://mvnrepository.com/artifact/com.opencsv/opencsv/4.5) and dependencies
+1. [OpenCSV](https://mvnrepository.com/artifact/com.opencsv/opencsv/4.5) and dependencies
 2. [Postgre JDBC driver](https://mvnrepository.com/artifact/org.postgresql/postgresql/42.2.5)
 
 ### Set up
