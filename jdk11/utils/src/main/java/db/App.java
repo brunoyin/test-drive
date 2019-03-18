@@ -35,7 +35,7 @@ public class App  implements Runnable
     }
 
     public void run() {
-        Connection conn;
+        Connection conn = null;
         var csvFilename = "csvfile";
         try {
             Class.forName("org.postgresql.Driver");
@@ -57,10 +57,16 @@ public class App  implements Runnable
             }else{
                 exporter.resultSetExport(rs, csvFilename + "-rs.csv");
             }
-            conn.close();
-
         } catch (Exception e) {
             e.printStackTrace();
-        }        
+        } finally{
+            if (conn != null){
+                try {
+                    conn.close();
+                } catch (Exception e) {
+                    // ignore errors
+                }
+            }
+        } 
     }
 }

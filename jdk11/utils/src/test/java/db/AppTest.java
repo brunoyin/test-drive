@@ -20,10 +20,11 @@ public class AppTest
     public void shouldAnswerWithTrue()
     {
         boolean success = false;
+        Connection conn = null;
         try {
             Class.forName("org.postgresql.Driver");
             String url = "jdbc:postgresql://192.168.0.48/bruno?user=bruno&password=bruno&ssl=false";
-            Connection conn = DriverManager.getConnection(url);
+            conn = DriverManager.getConnection(url);
             var exporter = new QueryExporter(conn);
             var rs = exporter.runQuery();
             String csvFilename = "test-bean.csv";
@@ -31,7 +32,15 @@ public class AppTest
             success = true;
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }finally{
+            if (conn != null){
+                try {
+                    conn.close();
+                } catch (Exception e) {
+                    // ignore errors
+                }
+            }
+        } 
         assertTrue( success );
     }
 }
