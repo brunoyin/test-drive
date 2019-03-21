@@ -48,3 +48,8 @@ go run ./main.go
 
 [main_test.go](./main_test.go)
 
+```bash
+go test
+
+```
+
