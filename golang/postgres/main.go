@@ -11,7 +11,10 @@ import (
 )
 
 func main() {
-	db, err := sql.Open("postgres", "host=192.168.0.48 user=bruno password=bruno dbname=bruno sslmode=disable")
+	connString := fmt.Sprintf("host=%s user=%s password=%s dbname=%s sslmode=disable",
+		getEnvVariable("PGHOST", "192.168.0.48"), getEnvVariable("PGUSER", "bruno"),
+		getEnvVariable("PGPASSWORD", "bruno"), getEnvVariable("PGDATABASE", "bruno"))
+	db, err := sql.Open("postgres", connString)
 	checkError("Failed to connect db\n", err)
 	defer db.Close()
 
@@ -60,6 +63,14 @@ func main() {
 		checkError("Error write row", err)
 	}
 	fmt.Printf("\ndone\n")
+}
+
+func getEnvVariable(keyName string, defaultValue string) string {
+	ret := os.Getenv(keyName)
+	if len(ret) == 0 {
+		ret = defaultValue
+	}
+	return ret
 }
 
 func convert2str(v sql.NullFloat64) string {
