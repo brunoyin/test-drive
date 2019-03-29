@@ -32,8 +32,8 @@ Typically the docker run command line looks like this:
 ```bash
 docker run -ti \
 --dns $my_dns_server \
--e http_proxy=$http_proxy
--e http_proxy=$https_proxy
+-e http_proxy=$http_proxy \
+-e http_proxy=$https_proxy \
 my-image $my_cmd
 
 ```
