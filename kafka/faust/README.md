@@ -4,7 +4,7 @@
 
 In its own words: Faust is a stream processing library, porting the ideas from Kafka Streams to Python.
 
-This is really a smart, simple and easy Kafka stream solution!
+This is really a smart Kafka Streams solution that is simple and easy for developers to implement!
 
 ## Testing
 
@@ -28,12 +28,25 @@ docker-compose up -d
 faust -A helloworld worker -l info
 ```
 
+### Using periodic task to generate Kafka activities
+```python
+@app.timer(interval=10.0)
+async def example_sender():
+    """
+        generate some data with a periodic job
+    """
+    await hello.send(
+        value=Greeting(from_name='Faust', to_name='you', sent_at=datetime.datetime.now()),
+    )
+
+```
+
 ### Generate activities using faust command
 ```python
 @app.command()
 async def send_value():
     """
-        use command line to send
+        use command line to send => faust -A helloworld send_value
     """
     await topic.send(
         value=Greeting(from_name='Bruno', to_name='you', sent_at=datetime.datetime.now()),
