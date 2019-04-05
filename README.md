@@ -29,3 +29,10 @@
 
 - A [faust: Python Kafka Stream Processing](https://github.com/robinhood/faust) test project
 
+## [aws-sam-cli: AWS Lamba Serverless Application Model Command Line tool](./aws/sam)
+
+- A Golang sample project
+- A dotnet core 2.1 sample project
+- A Java project
+
+If you are behind a firewall, these sample projects will fail. I documented my workaround to run tests successfully in local dev environment behind a proxy server.
