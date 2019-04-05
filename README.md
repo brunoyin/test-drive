@@ -12,5 +12,20 @@
 3. Use [the sample Powershell script](./dev-env-startup-sample.ps1) to set up dotnet core, JDK and Postgres db server access
 
 ## [Testing dotnet core 2.2](./dotnet)
+- A simple console app
+- An xUnit test project
+- Cake or C# Make: writing code inside cake scripts
 
 ## [Testing JDK](./jdk11)
+
+- Single-source feature test
+- A Maven test project targeting JDK 11
+
+## [Golang](./golang)
+
+- A simple Postgressql db access Go project
+
+## [Kafka](./kafka)
+
+- A [faust: Python Kafka Stream Processing](https://github.com/robinhood/faust) test project
+
