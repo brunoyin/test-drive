@@ -41,11 +41,11 @@ import json
 from airflow import DAG
 from airflow.models import Variable, TaskInstance, DagRun
 # from airflow.utils.db import provide_session
-
+from airflow.configuration import AIRFLOW_HOME
 from airflow.operators.python_operator import PythonOperator
 
 # using Docker image from puckel/docker-airflow:1.10.2, AIRFLOW_HOME
-airflow_home = '/usr/local/airflow' # os.environ.get('AIRFLOW_HOME')
+airflow_home = AIRFLOW_HOME
 flickr_url = 'https://api.flickr.com/services/feeds/photos_public.gne?tags=dog&format=json&nojsoncallback=1'
 db_file = os.path.join(airflow_home, 'discover_dag.db')
 json_file = os.path.join(airflow_home, 'flickr.json')
