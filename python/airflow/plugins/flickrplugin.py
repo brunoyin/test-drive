@@ -38,8 +38,7 @@ class FlickrOperator(BaseOperator):
 
     template_fields = ('flickr_url', 'sqlite_db_file')
     template_ext = []
-    ui_color = '#ffffff'  # ZipOperator's Main Color: white  # todo: find better color
-
+    
     @apply_defaults
     def __init__(
             self,
@@ -74,7 +73,7 @@ class FlickrOperator(BaseOperator):
         return 'Total {} records appended to photos table'.format(total)
 
 
-# Defining the plugin class
+# Defining the required plugin class
 class FlickrPlugin(AirflowPlugin):
     name = "flickr_plugin"
     operators = [FlickrOperator]

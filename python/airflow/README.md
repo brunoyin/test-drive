@@ -9,7 +9,7 @@ This is a nice schdeduling and automation tool. It makes use of some well known 
 - PythonOperator is used to execute a function
 - For testing purpose, I created 2 functions to create 2 tasks with dependancy
 
-## An Airflow plugin: [documentation]()
+## An Airflow plugin: [documentation](https://airflow.apache.org/plugins.html)
 [flickrplugin.py](./plugins/flickrplugin.py)
 
 - The main purpose is code organization and re-use
