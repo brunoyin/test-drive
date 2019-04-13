@@ -33,7 +33,7 @@ Running in Docker is even easier using the image from https://github.com/puckel/
 - copy plugins/flickrplugin.py to plugins directory 
 - docker-compose -f docker-compose-LocalExecutor.yml up -d
 - use a browser to open linux-host-ip:8080
-- locate "discover" dag, toggle "On", the trigger it to run
+- locate "discover" dag, toggle "On", then click trigger to run
 
 [docker-compose-LocalExecutor.yml](./docker-compose-LocalExecutor.yml): 
 ```yml
