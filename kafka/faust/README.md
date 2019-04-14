@@ -15,7 +15,7 @@ This is really a smart Kafka Streams solution that is simple and easy for develo
 
 ### Docker-compose to start both Zookeeper and Kalfka
 
-[docker-compose.yml](..\..\docker\kafka\docker-compose.yml)
+[docker-compose.yml](../../docker/kafka/docker-compose.yml)
 
 Run:
 ```bash
