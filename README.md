@@ -36,3 +36,10 @@
 - A Java project
 
 If you are behind a firewall, these sample projects will fail. I documented my workaround to run tests successfully in local dev environment behind a proxy server.
+
+## [Apache Airflow](./python/airflow): workflow automation and scheduling
+
+Each Workflow, or a DAG, is written in Python code. Each task is still executed by a worker in a separate process, that can be any OS command. It does not run on Windows natively. It can run in a Linux subsystem on Windows.
+
+- [A test DAG](python/airflow/dags/fetch_load.py)
+- [A test plugin](python/airflow/plugins/flickrplugin.py), or the code in a separate module so that a DAG is more readable
