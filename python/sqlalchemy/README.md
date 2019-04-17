@@ -2,7 +2,7 @@
 
 sqlalchemy is widely used. For example, Pandas read_sql uses sqlalchemy to connect to a supported database. 
 
-In this test, I want to transfer all records between two identitical tables. It is useful when you need to move data between 2 non-production environment. This is not the most efficient way to move data, but I will show here that it's very convenient to move small data sets.
+In this test, I want to transfer all records between two identitical tables. It is useful when you need to move data between 2 non-production environments. This is not the most efficient way to move data, but I will show here that it's very convenient to move small data sets.
 
 ### Here is how it works:
 

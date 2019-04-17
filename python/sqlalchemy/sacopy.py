@@ -1,5 +1,9 @@
 """
-    Copy all records between 2 identical tables using sqlalchemy to discover table definition
+    Copy all records between 2 identical tables using sqlalchemy:
+    
+    1. generate select query
+    2. generate insert query
+    3. use batches to reduce resource usage on database servers
 """
 import traceback
 
