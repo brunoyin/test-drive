@@ -43,3 +43,16 @@ Each Workflow, or a DAG, is written in Python code. Each task is still executed 
 
 - [A test DAG](python/airflow/dags/fetch_load.py)
 - [A test plugin](python/airflow/plugins/flickrplugin.py), or the code in a separate module so that a DAG is more readable
+
+## [sqlalchemy](./python/sqlalchemy): copy identical tables with fewer than 500K records using sqlachemy
+
+A test project that does:
+
+- use sqlalchemy to generate select and insert queries
+- use batches to improve performance
+
+Check out [my blog post](https://brunoyin.gitlab.io/post/20190416-sqlalchemy-table-copy/) about how to deal with big data sets.
+
+## [Poetry](./python/development/db2csv) managed package project:
+
+Using [poetry](https://github.com/sdispater/poetry) to manage dependencies and virtualenv
