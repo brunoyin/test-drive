@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "db2csv"
+version = "0.1.0"
+description = ""
+authors = ["Bruno Yin <bruno.yin@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.6"
+psycopg2 = "^2.8"
+click = "^7.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^3.0"
+
+[tool.poetry.scripts]
+db2csv = 'db2csv:main'
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
