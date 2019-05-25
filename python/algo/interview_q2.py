@@ -1,7 +1,7 @@
 """
     interview online assessment
 
-    question 2: find the fast delivering route
+    question 2: find the fastest delivering route
 
     given a map of 2d array,  example
     [
@@ -12,7 +12,7 @@
 
     start from top left, delivery is marked as 9, no access 0, has access 1
 
-    find the fast path
+    find the fastest path
 
     Test01:
 
