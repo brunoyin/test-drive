@@ -13,9 +13,12 @@ using System;
 using System.Speech.Synthesis;
 
 public class TestText2Speech {
-    public static void main(string[] args){
+    public static void Say(string[] args){
         var speak = new SpeechSynthesizer();
-        speak.Speak("good morning!");
+        // speak.Speak("good morning!");
+        speak.Speak(string.Join(" ", args));
     }
 }
 "@
+Add-Type $test_code -ReferencedAssemblies System.Speech
+[TestText2Speech]::Say(@('hello', 'world'))
