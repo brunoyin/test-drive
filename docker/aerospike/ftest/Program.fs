@@ -5,11 +5,9 @@ open System.Diagnostics
 open FSharp.Data
 open Aerospike.Client
 
-type Choices = LOAD | QUERY | DELETE
-//
-type CsvCollege = CsvProvider<"D:/bruno/projects/powershell/aerospike/scorecard-recent.csv", HasHeaders=true>
+type CsvCollege = CsvProvider<"../scorecard-recent.csv", HasHeaders=true>
 
-let dataFilename = "D:/bruno/projects/powershell/aerospike/scorecard-recent.csv"
+let dataFilename = "../scorecard-recent.csv"
 //
 let asServerName = "192.168.1.250"
 let asServerPort = 3000
@@ -115,18 +113,8 @@ let main argv =
             | "delete" -> (loadCollege client )
             | "query" -> (runQuery client "carol")
             | _ -> -2
-            //if actionType = "load"  then (loadCollege client )
-            //elif actionType = "delete" then (deleteAll client )
-            //elif actionType = "query" then (runQuery client "carol")
-            //else  -2
         | _ -> -1
-    //printfn "Hello World from F#!"
     
-    // loadCollege client 
-    //
-    // deleteAll client
-    // 0 // return an integer exit code
-    //let ret = runQuery client "carol"
     if ret < 0 then
         printfn "Invalid command line options. Please use one of these values: load, query, delete"
     w.Stop()
