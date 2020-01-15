@@ -6,9 +6,9 @@ open System.Diagnostics
 open FSharp.Data
 open Aerospike.Client
 
-type CsvCollege = CsvProvider<"D:/bruno/projects/powershell/aerospike/scorecard-recent.csv", HasHeaders=true>
+type CsvCollege = CsvProvider<"../scorecard-recent.csv", HasHeaders=true>
 
-let dataFilename = "D:/bruno/projects/powershell/aerospike/scorecard-recent.csv"
+let dataFilename = "../scorecard-recent.csv"
 //
 let asServerName = "13.92.208.142"
 let asServerPort = 3000
@@ -136,4 +136,4 @@ let main argv =
 printfn "%A" fsi.CommandLineArgs
 match fsi.CommandLineArgs with
 | [| scriptName; |] -> printfn "Syntax: dotnet fsi %s [load | query | delete]" scriptName
-| _ -> main fsi.CommandLineArgs.[1 .. ]
+| _ -> main fsi.CommandLineArgs.[1 .. ] |> ignore
