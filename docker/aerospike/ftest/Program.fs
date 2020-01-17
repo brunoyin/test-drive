@@ -29,6 +29,28 @@ writePolicy.totalTimeout <- 5000
 writePolicy.recordExistsAction <- RecordExistsAction.REPLACE
 writePolicy.sendKey <- true
 
+let mutable queryDone = false
+// let items: array<int>  = [| 1; 2; 4; |]
+
+type RecordSequenceHandler(binNames: array<string>) =
+    interface RecordSequenceListener with
+        member this.OnRecord(key: Key, record: Record) = 
+            //printfn "%s, %s, %s" (record.GetString binName) (record.GetString "City") (record.GetString "State")
+            binNames 
+            |> Array.map (fun x -> (record.GetString x) ) 
+            |> String.concat ", " 
+            |> printfn "%s"
+            ()
+        member this.OnSuccess() = 
+            printfn "Query completed OK"
+            queryDone <- true
+            ()
+        member this.OnFailure(e: AerospikeException) = 
+            // printfn "Failed to: %s %s %A" key.ns key.setName key.userKey
+            printfn "Failed with: %A" e
+            queryDone <- true
+            ()
+
 type WriteHandler(client: AsyncClient, policy: WritePolicy , key: Key , bin: Bin)=
     interface WriteListener with
         member this.OnSuccess(key: Key) = 
@@ -39,16 +61,16 @@ type WriteHandler(client: AsyncClient, policy: WritePolicy , key: Key , bin: Bin
             printfn "%A" e
             ()
 
-let checkCSVFile =
-    //let csv = CsvCollege.Load(dataFilename)
-    //let headers = 
-    //  match csv.Headers with
-    //  | Some hdr -> hdr
-    //  | None -> [|"";|]
-    //// printfn "%s" headers.[0]
-    //headers |> String.concat "," |> printfn "%A"
-    //let row = csv.Rows |> Seq.head
-    //printfn "First row: %s / %s" row.CITY row.STABBR
+let checkCSVFile () =
+    let csv = CsvCollege.Load(dataFilename)
+    let headers = 
+      match csv.Headers with
+      | Some hdr -> hdr
+      | None -> [|"";|]
+    // printfn "%s" headers.[0]
+    headers |> String.concat "," |> printfn "%A"
+    let row = csv.Rows |> Seq.head
+    printfn "First row: %s / %s" row.CITY row.STABBR
     ()
 
 let connectSync (servernName: string) (serverPort : int) : AerospikeClient = 
@@ -190,6 +212,36 @@ let runQuery(name : string) : int =
     client.Close()
     0
 
+let runQueryAsync(name : string) : int =
+    let client = connectASync asServerName asServerPort
+    //
+    let w = Stopwatch.StartNew()
+    let stmt = Statement()
+    stmt.SetNamespace ns
+    stmt.SetSetName setName
+    // stmt.SetIndexName "collegename_index"
+    let binNames = [|"Name"; "City"; "State";|]
+    stmt.SetBinNames binNames
+    stmt.SetPredExp(
+      (PredExp.StringBin "Name"),
+      (PredExp.StringValue name), 
+      (PredExp.StringRegex RegexFlag.ICASE)
+    )
+    // 
+    printfn "Running query asynchronously ..."
+    queryDone <- false
+    client.Query(null, RecordSequenceHandler(binNames),  stmt) 
+    w.Stop()
+    printfn "Time used %f seconds used to run query" w.Elapsed.TotalSeconds
+    w.Reset()
+    w.Start()
+    while not queryDone do
+        Thread.Sleep 50
+    w.Stop()
+    printfn "Done looping result set in %f seconds " w.Elapsed.TotalSeconds
+    client.Close()
+    0
+
 let deleteAll (): int =
     let client: AerospikeClient = connectSync asServerName asServerPort
     let scanPol = ScanPolicy()
@@ -223,7 +275,8 @@ let main argv =
             | "async" -> (loadCollegeAsync () )
             | "token" -> (loadCollegeToken () )
             | "delete" -> ( deleteAll () )
-            | "query" -> (runQuery "carol")
+            | "query1" -> (runQuery "carol")
+            | "query2" -> (runQueryAsync "carol")
             | _ -> -2
             //if actionType = "load"  then (loadCollege client )
             //elif actionType = "delete" then (deleteAll client )
