@@ -1,6 +1,6 @@
-# Testing a few HTTP client to access REST API
+# Testing and comparing 5 REST API clients
 
-I had the impression that all HTTP clients are good for testing REST API. It might be true for functional tests. But for performing testing, you need to make sure your REST client is also high performing. In this test, I will try to use a few different clients to run again my folaris server.
+I had the impression that all HTTP clients are good for testing REST API. It might be true for functional tests. But for performing testing, you need to make sure your REST client is also high performing. In this test, I will try to use a few different clients to run again my [folaris server](https://github.com/brunoyin/folaris.git).
 
 I am going to run tests against a local server running on localhost/loopback and remote server in Docker container
 
