@@ -52,7 +52,9 @@ $payload = @{cmd = $cmd }|ConvertTo-Json
 # call with Basic Authentication
 Invoke-RestMethod -Headers $authHeader -Uri $run_url -Method Post -Body $payload -ContentType 'application/json' -UseBasicParsing
 ```
+
 I used this script to test to [Run 1000 times](pwsh.rest.tests.ps1). The result
+
 ```powershell 
 .\pwsh.rest.tests.ps1 -total 100
 <#
@@ -65,6 +67,7 @@ I used this script to test to [Run 1000 times](pwsh.rest.tests.ps1). The result
 ```
 
 ## [RestSharp](http://restsharp.org/): a popular dotnet REST API client
+
 ```powershell
 
 Function f {
@@ -82,7 +85,9 @@ Function f {
 }
 
 ```
+
 I used this script to [run 1000 times](restsharp.tests.ps1). Results
+
 ```powershell
 .\pwsh.rest.tests.ps1 -total 100
 <#
@@ -112,6 +117,7 @@ def run_folaris():
 ```
 
 Results:
+
 ```powershell
 python .\py.requests.tests.py 100
 <#
@@ -143,6 +149,7 @@ Http.Request(run_url, httpMethod = HttpMethod.Post, headers=headers, body=TextRe
 ```
 
 Results:
+
 ```powershell
 dotnet fsi .\fsharp.http.tests.fsx 100
 <#
@@ -177,7 +184,9 @@ for(int x=1; x<=total; x++){
 // ....
 
 ```
+
 Results:
+
 ```powershell
 # on Windows, run
 cmd /c [path-to]\groovy-3.0.1\bin\groovy.bat groovy.rest.tests.groovy -t 100
@@ -195,7 +204,8 @@ total 100 calls done in 3 seconds, avg: 33.33 per second
 
 The numbers in the result are relative to the hardware. But the comparison is valid.
 
-### When testing localhost/loopback interface
+### When testing with localhost/loopback interface
+
  Restsharp with 697 calls per second is the clear winner, Powershell with 606 calls per second is in the second place. 
 
 Groovy/Windows in third place is 10 times slower than RestSharp and Powershell/Invoke-RestMethod. 
