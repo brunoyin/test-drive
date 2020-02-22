@@ -80,7 +80,7 @@ let loadCollegeToken() : int =
     let insertAsync (row:CsvCollege.Row) = 
         async {
             let key = Key(ns, setName, row.UNITID)
-            let bin1, bin2, bin3, bin4, bin5 = Bin("Name", row.INSTNM), Bin("City", row.CITY), Bin("Latitide", row.LATITUDE), Bin("Longitude", row.LONGITUDE),Bin("State", row.STABBR)
+            let bin1, bin2, bin3, bin4, bin5 = Bin("Name", row.INSTNM), Bin("City", row.CITY), Bin("Latitude", row.LATITUDE), Bin("Longitude", row.LONGITUDE),Bin("State", row.STABBR)
             let bin6, bin7, bin8, bin9, bin10 = Bin("Region", row.REGION), Bin("ACT", row.ACTCMMID), Bin("SAT", row.SAT_AVG), Bin("AdminRate", row.ADM_RATE),Bin("Cost", row.COSTT4_A)
             let bin11, bin12, bin13 = Bin("Earning", row.MD_EARN_WNE_P10), Bin("StudentTotal", row.UGDS),Bin("ZipCode", row.ZIP)
             //let writeListener: WriteListener = WriteHandler(client,writePolicy,key, bin1 ) :> WriteListener

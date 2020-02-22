@@ -329,3 +329,8 @@ dmypy.json
 
 # faust
 *-data/
+
+# paket
+.paket/
+paket-files/
+paket.lock
