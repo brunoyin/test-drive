@@ -8,6 +8,7 @@ I am going to run tests against a local server running on localhost/loopback and
 * Powershell/Restsharp
 * F# Data Http
 * Python Requests
+* Groovy/JVM
 
 ## Set up folaris
 
