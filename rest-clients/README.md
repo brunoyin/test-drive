@@ -4,8 +4,8 @@ I had the impression that all HTTP clients are good for testing REST API. It mig
 
 I am going to run tests against a local server running on localhost/loopback and remote server in Docker container
 
-* Powershell Invoke-Restmethod
-* Restsharp
+* Powershell/Invoke-Restmethod
+* Powershell/Restsharp
 * F# Data Http
 * Python Requests
 
@@ -38,6 +38,8 @@ curl --header "Content-Type: application/json" \
 
 ### Powershell REST Test
 
+[source code](pwsh.rest.tests.ps1)
+
 ```powershell 
 [string]$cmd
 [string]$username='folaris'
@@ -67,6 +69,8 @@ I used this script to test to [Run 1000 times](pwsh.rest.tests.ps1). The result
 ```
 
 ## [RestSharp](http://restsharp.org/): a popular dotnet REST API client
+
+[source code](restsharp.tests.ps1)
 
 ```powershell
 
@@ -191,9 +195,9 @@ Results:
 # on Windows, run
 cmd /c [path-to]\groovy-3.0.1\bin\groovy.bat groovy.rest.tests.groovy -t 100
 <#
-# Groovy/Java on Windows: acceptable slow
 # localhost
 total 1000 calls done in 16 seconds, avg: 62.5 per second
+
 # remote
 total 100 calls done in 3 seconds, avg: 33.33 per second
 #>
