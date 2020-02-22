@@ -64,7 +64,7 @@ I used this script to test to [Run 1000 times](pwsh.rest.tests.ps1). The result
 #>
 ```
 
-## [RestShartp](http://restsharp.org/): a popular dotnet REST API client
+## [RestSharp](http://restsharp.org/): a popular dotnet REST API client
 ```powershell
 
 Function f {
@@ -115,7 +115,7 @@ Results:
 ```powershell
 python .\py.requests.tests.py 100
 <#
-# Python Requests seems to be painfully slow
+# localhost
 Total 5 calls done in 10.18 seconds, average 0.49 calls per second
 
 # remote
@@ -198,7 +198,7 @@ The numbers in the result are relative to the hardware. But the comparison is va
 ### When testing localhost/loopback interface
  Restsharp with 697 calls per second is the clear winner, Powershell with 606 calls per second is in the second place. 
 
-Groovy/Windows in third place is 10 times slower than RestSharp and Powershell/Invoke-RestMethod. When multiple such test clients running, it can match up with any server.
+Groovy/Windows in third place is 10 times slower than RestSharp and Powershell/Invoke-RestMethod. 
 
 With 1 call in 2 seconds, both Python and F# do not perform well at all, I will have to remember not use them to run a local performance test.
 
