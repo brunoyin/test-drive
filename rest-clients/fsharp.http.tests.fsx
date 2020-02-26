@@ -7,14 +7,14 @@ open FSharp.Data
 open FSharp.Data.HttpRequestHeaders
 
 // printf "%A" (Environment.GetCommandLineArgs() )
-let total = 
+let run_url, total = 
     match Environment.GetCommandLineArgs() with
-    | [|_; _; t; |] -> Convert.ToInt32(t)
-    | _ -> 10
+    | [|_; url; t; |] -> url, Convert.ToInt32(t)
+    | _ -> "http://localhost:8080/run", 10
 
 let w = Stopwatch.StartNew()
 // type PwshCommand = {cmd: String}
-let run_url = "http://192.168.1.250:9876/run"
+// let run_url = "http://192.168.1.250:9876/run"
 let headers = [ContentType "application/json"; (BasicAuth "folaris" "folaris") ]
 // let cmd = {cmd = "Get-Date"}
 let payload = "{\"cmd\": \"Get-Date\"}"

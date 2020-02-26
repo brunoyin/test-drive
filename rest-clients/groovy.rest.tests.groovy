@@ -13,23 +13,29 @@ import static groovyx.net.http.Method.POST
 
 import groovy.time.*
 
-def total = 100
+def total = 1
 
 def cli = new CliBuilder(usage: 'groovy.rest.tests.groovy -[t]')
 cli.with {
     h longOpt: 'help', 'Show usage information'
     t longOpt: 'total', args: 1, argName: 'total', 'Total REST calls'
+    u longOpt: 'url', args: 1, argName: 'url', 'folaris'
 }
 def options = cli.parse(args)
 if (options.h) { cli.usage() }
 if (options.total){
     total = options.t as Integer
 }
+def folarisUrl = 'http://localhost:8080/run'
+if (options.url){
+    folarisUrl = options.u
+}
+println "folarisUrl = ${options.url} toal = ${options.t}"
 
 def timeStart = new Date()
 
 // def folarisSite = new HTTPBuilder( 'http://localhost:8080/run' )
-def folarisSite = new HTTPBuilder( 'http://192.168.1.250:9876/run' )
+def folarisSite = new HTTPBuilder(folarisUrl)
 folarisSite.auth.basic 'folaris', 'folaris'
 
 for(int x=1; x<=total; x++){
@@ -46,4 +52,5 @@ def timeStop = new Date()
 TimeDuration duration = TimeCategory.minus(timeStop, timeStart)
 // println duration.seconds
 def avg = total / duration.seconds
+println "folarisUrl = ${folarisUrl} toal = ${total}"
 println "total ${total} calls done in ${duration.seconds} seconds, avg: ${avg} per second"

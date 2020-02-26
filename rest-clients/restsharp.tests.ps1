@@ -1,4 +1,4 @@
-param([int]$total = 1000)
+param([int]$total = 1000, [string]$run_url='http://localhost:8080/run')
 
 try {
     [void][RestSharp.Authenticators.HttpBasicAuthenticator]
@@ -16,7 +16,9 @@ Add-Type -path $rsharp
 Function f {
     [string]$username='folaris'
     [string]$password='folaris'
-    $client = [RestSharp.RestClient]::new( 'http://192.168.1.250:9876')
+    # no-caching hack
+    $client = [RestSharp.RestClient]::new($("{0}?nocache={1}" -f $run_url,[DateTime]::Now.Ticks))
+    # $client.CachePolicy = [System.Net.Cache.HttpRequestCachePolicy]::new([System.Net.Cache.HttpRequestCacheLevel]::Revalidate)
     $client.Authenticator = [RestSharp.Authenticators.HttpBasicAuthenticator]::new($username,$password)	 
     $cmd = [PwshCommand]::new()
     $cmd.cmd = 'Get-Date'

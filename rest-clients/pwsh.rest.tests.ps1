@@ -1,4 +1,4 @@
-param([int]$total = 1000)
+param([int]$total = 1000, [string]$run_url='http://localhost:8080/run')
 
 Function f {
 <#
@@ -41,7 +41,7 @@ $cmd = 'Get-date'
 $numbers = 1 .. $total
 ForEach ($i in $numbers)
 {
-	$ret = f -cmd $cmd # -run_url 'http://192.168.1.250:9876/run'
+	$ret = f -cmd $cmd -run_url $run_url
 }
 $w.Stop()
 $w
