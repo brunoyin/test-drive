@@ -189,6 +189,14 @@ for(int x=1; x<=total; x++){
 // ....
 
 ```
+## Go
+
+[Source code](goHttpTest.go)
+
+Compiled binaries:
+
+* [Linux](go_linux_restclient)
+* [Windows](go_win_restclient.exe)
 
 Results:
 

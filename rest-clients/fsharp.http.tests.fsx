@@ -6,11 +6,13 @@ open System.Diagnostics
 open FSharp.Data
 open FSharp.Data.HttpRequestHeaders
 
-// printf "%A" (Environment.GetCommandLineArgs() )
+printfn "%A" (Environment.GetCommandLineArgs() )
 let run_url, total = 
     match Environment.GetCommandLineArgs() with
-    | [|_; url; t; |] -> url, Convert.ToInt32(t)
+    | [|_; _; url; t; |] -> url, Convert.ToInt32(t)
     | _ -> "http://localhost:8080/run", 10
+
+printfn "run_url = %s and total calls = %i" run_url total
 
 let w = Stopwatch.StartNew()
 // type PwshCommand = {cmd: String}
