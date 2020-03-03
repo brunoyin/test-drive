@@ -284,4 +284,4 @@ This is more typical and normal use case. Client performance from best to worst:
 1. Powershell Invoke-RestMethod: 19 calls per second
 1. Powershell/RestSharp: 19 calls per second
 
-While Python and F# struggles with loopback interface, they are the winners when running against remote servers.
+While Golang, Python and F# struggles with loopback interface, they are the winners when running against remote servers.
