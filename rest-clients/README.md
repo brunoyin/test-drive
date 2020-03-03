@@ -189,6 +189,21 @@ for(int x=1; x<=total; x++){
 // ....
 
 ```
+
+Results
+
+```powershell
+# on Windows, run
+
+<#
+# localhost
+total 1000 calls done in 16 seconds, avg: 62.5 per second
+
+# remote
+total 100 calls done in 3 seconds, avg: 33.33 per second
+#>
+```
+
 ## Go
 
 [Source code](goHttpTest.go)
@@ -202,16 +217,46 @@ Results:
 
 ```powershell
 # on Windows, run
-cmd /c [path-to]\groovy-3.0.1\bin\groovy.bat groovy.rest.tests.groovy -t 100
-<#
-# localhost
-total 1000 calls done in 16 seconds, avg: 62.5 per second
+.\go_win_restclient.exe http://localhost:8080/run 10
+.\go_win_restclient.exe http://192.168.1.4:8080/run 100
 
-# remote
-total 100 calls done in 3 seconds, avg: 33.33 per second
+<#
+# localhost: 
+ command args 1:  10
+total:  10
+Seconds used:  3.0282483
+total 10 calls in 3.028248 seconds, avg 3.302239 calls per seconds
+
+# network interface: http://192.168.1.4:8080/run
+command args 1:  100
+total:  100
+Seconds used:  0.1543947
+total 100 calls in 0.154395 seconds, avg 647.690627 calls per seconds
 #>
 ```
 
+
+
+## Node js
+
+[Source code](node-rest-client.js)
+
+Results
+
+```powershell
+# install dependency before running it
+# npm init
+# npm install "node-rest-client"
+node .\node-rest-client.js http://localhost:8080/run 50
+node .\node-rest-client.js http://192.168.1.4:8080/run 50
+
+<#
+Total 50 calls done in 0.140113401 seconds, average 356.8538030134605 calls / second
+
+
+Total 50 calls done in 0.1190855 seconds, average 419.8663985119935 calls / second
+#>
+```
 
 ## Conclusion
 
