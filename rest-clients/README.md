@@ -1,4 +1,4 @@
-# Testing and comparing 5 REST API clients
+# Testing and comparing 7 REST API clients
 
 I had the impression that all HTTP clients are good for testing REST API. It might be true for functional tests. But for performing testing, you need to make sure your REST client is also high performing. In this test, I will try to use a few different clients to run again my [folaris server](https://github.com/brunoyin/folaris.git).
 
@@ -9,6 +9,8 @@ I am going to run tests against a local server running on localhost/loopback and
 * F# Data Http
 * Python Requests
 * Groovy/JVM
+* Golanf
+* Node js
 
 ## Set up folaris
 
@@ -274,8 +276,10 @@ With 1 call in 2 seconds, both Python and F# do not perform well at all, I will 
 
 This is more typical and normal use case. Client performance from best to worst:
 
-1. Python requests: 69 calls per second
-1. F# Data Http: 59 calls per second
+1. Golang: 127 calls per second
+1. Python requests: 103 calls per second
+1. F# Data Http: 103 calls per second
+1. Node js: 102 calls per second
 1. Groovy/JVM RestClient: 33 calls per second
 1. Powershell Invoke-RestMethod: 19 calls per second
 1. Powershell/RestSharp: 19 calls per second
