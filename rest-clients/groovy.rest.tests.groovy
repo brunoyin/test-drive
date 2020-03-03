@@ -51,6 +51,7 @@ for(int x=1; x<=total; x++){
 def timeStop = new Date()
 TimeDuration duration = TimeCategory.minus(timeStop, timeStart)
 // println duration.seconds
-def avg = total / duration.seconds
+def totalSeconds = duration.toMilliseconds() / 1000.0
+def avg = total / totalSeconds
 println "folarisUrl = ${folarisUrl} toal = ${total}"
-println "total ${total} calls done in ${duration.seconds} seconds, avg: ${avg} per second"
+println "total ${total} calls done in ${totalSeconds} seconds, avg: ${avg} per second"
